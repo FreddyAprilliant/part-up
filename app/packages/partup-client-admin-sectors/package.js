@@ -19,7 +19,9 @@ Package.onUse(function(api) {
     api.addFiles([
 
         'AdminSectors.html',
-        'AdminSectors.js'
+        'AdminSectors.js',
+        '_EditSector.html',
+        '_EditSector.js'
 
     ], 'client');
 
