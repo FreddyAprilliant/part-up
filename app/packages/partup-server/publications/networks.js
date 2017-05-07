@@ -2,12 +2,15 @@
  * Publish multiple networks for discover
  *
  * @param {Object} parameters
- * @param {string} parameters.textSearch
- * @param {string} parameters.locationId
- * @param {string} parameters.language
- * @param {string} parameters.sort
- * @param {number} parameters.limit
- * @param {number} parameters.skip
+ * @param {String} parameters.textSearch
+ * @param {String} parameters.locationId
+ * @param {String} parameters.language
+ * @param {String} parameters.type
+ * @param {String} parameters.sector_id
+ * @param {String} parameters.sort
+ * @param {Number} parameters.limit
+ * @param {Number} parameters.skip
+ * @param {String} parameters.userId
  */
 Meteor.routeComposite('/networks/discover', function(request, parameters) {
     check(parameters.query, {
@@ -15,7 +18,7 @@ Meteor.routeComposite('/networks/discover', function(request, parameters) {
         locationId: Match.Optional(String),
         language: Match.Optional(String),
         type: Match.Optional(String),
-        sector: Match.Optional(String),
+        sector_id: Match.Optional(String),
         sort: Match.Optional(String),
         limit: Match.Optional(String),
         skip: Match.Optional(String),
@@ -27,7 +30,7 @@ Meteor.routeComposite('/networks/discover', function(request, parameters) {
         locationId: parameters.query.locationId,
         language: (parameters.query.language === 'all') ? undefined : parameters.query.language,
         type: parameters.query.type,
-        sector: parameters.query.sector,
+        sector_id: parameters.query.sector_id,
         sort: parameters.query.sort,
         limit: parameters.query.limit,
         skip: parameters.query.skip,

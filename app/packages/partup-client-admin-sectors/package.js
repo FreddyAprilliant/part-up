@@ -20,8 +20,8 @@ Package.onUse(function(api) {
 
         'AdminSectors.html',
         'AdminSectors.js',
-        '_EditSector.html',
-        '_EditSector.js'
+        './templates/_EditSector.html',
+        './templates/_EditSector.js'
 
     ], 'client');
 

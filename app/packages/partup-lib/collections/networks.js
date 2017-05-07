@@ -658,7 +658,7 @@ Networks.guardedMetaFind = function(selector, options) {
         'collegues',
         'collegues_custom_a',
         'collegues_custom_b',
-        'sector'
+        'sector_id'
     ];
 
     unguardedFields.forEach(function(unguardedField) {
@@ -674,7 +674,7 @@ Networks.guardedMetaFind = function(selector, options) {
  * @memberOf Networks
  * @param userId
  * @param {Object} options
- * @param parameters
+ * @param {Object} parameters
  * @return {Cursor}
  */
 Networks.findForDiscover = function(userId, options, parameters) {
@@ -692,7 +692,7 @@ Networks.findForDiscover = function(userId, options, parameters) {
     var locationId = parameters.locationId || undefined;
     var language = parameters.language || undefined;
     var type = parameters.type || undefined;
-    var sector = parameters.sector || undefined;
+    var sector_id = parameters.sector_id || undefined;
     var notArchived = parameters.notArchived || undefined;
 
     if (sort) {
@@ -740,8 +740,8 @@ Networks.findForDiscover = function(userId, options, parameters) {
     }
 
     // Filter the networks on sector
-    if (sector) {
-        selector['sector'] = sector;
+    if (sector_id) {
+        selector['sector_id'] = sector_id;
     }
 
     if (notArchived) {
@@ -751,7 +751,8 @@ Networks.findForDiscover = function(userId, options, parameters) {
     // Limit uppers array to 7 to remove excessive data
     options.fields['uppers'] = {$slice: 7};
 
-    return this.guardedFind(userId, selector, options);
+    // Setting the first parameter (userId) to (null) because it should not affect the discover page (but does if set).
+    return this.guardedFind(null, selector, options);
 };
 
 /**
